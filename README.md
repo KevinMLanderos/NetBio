@@ -1,9 +1,9 @@
 # NetBio  
 
-This repository harbors all the scripts used during the accomplishment of the Challenge.
+This repository harbors all the scripts (python, R), networks and other files used during the accomplishment of the CdeCMx 2020 Network Biology Challenge.
 
-## Clubbers  
+## GenoTeam - Clubbers  
 Elizabeth Márquez  
-Kevin Meza  
-Diego Camacho  
-Victor Nieto 
+Kevin Meza Landeros  
+Diego Camacho Hernández  
+Victor Nieto Caballero
