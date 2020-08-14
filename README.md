@@ -101,3 +101,86 @@ plt.xlabel('Distance', fontname='sans-serif', fontsize=12, fontweight='heavy', c
 plt.show()
 ```
 ![png](img/output_20_0.png)
+
+### Human PPI Network
+```python
+#Load the graph
+human_ppi = nx.read_graphml("./Networks_Challenge/HI_union.graphml")
+
+# Define position of each node
+pos = nx.nx_agraph.graphviz_layout(human_ppi,prog='neato')
+# # Plot the graph
+plt.figure(figsize=(10, 10))
+nx.draw_networkx_nodes(human_ppi, pos=pos,node_size=30, node_color='#6BB533')
+nx.draw_networkx_edges(human_ppi, pos=pos,width=0.5,arrows=False)
+#Uncomment to label by node number
+#nx.draw_networkx_labels(sarscov2_human,pos=pos, font_size=8, alpha=1)
+plt.title("Human protein-protein interaction network of Lung proteins", fontname='serif', fontsize=20, fontweight='bold', color='#3D6E18')
+plt.text(900, -200, 'Luck et al. Nature 2020', horizontalalignment='right', verticalalignment='bottom', fontname='monospace', fontstyle='italic')
+
+plt.style.use('bmh') #ggplot, seaborn, bmh
+plt.show()
+```
+
+![png](img/output_33_0.png)
+
+
+**Communities**  
+Using modularity maximization
+```python
+from networkx.algorithms import community as nxcommunity
+
+communities_modularity = list(nxcommunity.greedy_modularity_communities(nx.Graph(human_ppi)))
+communities_modularity_dictionary_temp={node:i for i,community in enumerate(communities_modularity) for node in community}
+communities_modularity_dictionary={node:communities_modularity_dictionary_temp[node] for node in list(human_ppi.nodes())}
+
+
+communities_dictionary=communities_modularity_dictionary
+plt.figure(figsize=(8, 8))
+plt.axis('off')
+
+nx.draw_networkx(human_ppi, pos, node_size=600,with_labels=True, cmap=plt.cm.RdYlBu, node_color=list(communities_dictionary.values()))
+plt.show(human_ppi)
+```
+![png](img/output_57_0.png)
+
+Using label propagation  
+
+```python
+communities_labelprop = list(nxcommunity.label_propagation.asyn_lpa_communities(human_ppi,seed=10))
+communities_labelprop_dictionary_temp={node:i for i,community in enumerate(communities_labelprop) for node in community}
+communities_labelprop_dictionary={node:communities_labelprop_dictionary_temp[node] for node in list(human_ppi.nodes())}
+
+plt.figure(figsize=(8, 8))
+plt.axis('off')
+
+communities_dictionary=communities_labelprop_dictionary
+nx.draw_networkx(human_ppi, pos, node_size=600,with_labels=True, cmap=plt.cm.RdYlBu, node_color=list(communities_dictionary.values()))
+plt.show(human_ppi)
+```
+![png](img/output_59_0.png)  
+
+### Drug - Human Protein Target Network
+
+```python
+#Load the graph
+drug_humanProt = nx.read_graphml("./Networks_Challenge/DrugBank - Combined Network.graphml")
+
+# Define position of each node
+pos = nx.nx_agraph.graphviz_layout(drug_humanProt,prog='neato')
+# # Plot the graph
+plt.figure(figsize=(10, 10))
+nx.draw_networkx_nodes(drug_humanProt, pos=pos, node_size=30, node_color='#C74650')
+nx.draw_networkx_edges(drug_humanProt, pos=pos,width=0.5,arrows=False)
+#Uncomment to label by node number
+#nx.draw_networkx_labels(drug_humanProt,pos=pos, font_size=8, alpha=1)
+plt.title("Drug - Human Protein Target Network", fontname='serif', fontsize=20, fontweight='bold', color='#4A040A')
+plt.text(3000, -250, 'DrugBank', horizontalalignment='right', verticalalignment='bottom', fontname='monospace', fontstyle='italic')
+
+#print(plt.style.available)
+plt.style.use('bmh') #ggplot, seaborn, bmh
+plt.show()
+```
+
+
+![png](img/output_61_0.png)
