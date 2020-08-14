@@ -16,7 +16,12 @@ Drug - Human = https://www.drugbank.ca/pharmaco/genomics
 Workflow based on: https://github.com/jgtz/CdeCMx2020-NetworkBiology  
 
 ## General workflow  
-***Important Note: Some steps are ommited here, here we show some of the important points. To get the complete workflow take a look of the the attached Jupyter Notebooks***  
+***Important Note: Some steps are ommited here, here we show some of the important points. To get the complete workflow take a look of the the attached Jupyter Notebooks.***  
+
+## Step 1  
+Use NetworkX to calculate network theory measures (degree, distance, betweeness centrality, and others you might find interesting) on each of the three PPI networks (COVID-Human, Human, Drug-Human). What is the distribution of these network measures? What are the nodes or node pairs with the highest value for these measures in each network?
+
+### SARS-CoV-2 - Human PPI Network  
 ```python
 import pandas as pd
 import numpy as np
@@ -26,10 +31,6 @@ from IPython.display import Image
 import matplotlib.pyplot as plt
 import collections
 ```  
-## Step 1  
-Use NetworkX to calculate network theory measures (degree, distance, betweeness centrality, and others you might find interesting) on each of the three PPI networks (COVID-Human, Human, Drug-Human). What is the distribution of these network measures? What are the nodes or node pairs with the highest value for these measures in each network?
-
-### SARS-CoV-2 - Human PPI Network
 ```python
 #Load the graph
 sarscov2_human = nx.read_graphml("./Networks_Challenge/SARS-CoV-2 Host-Pathogen Interaction Map (Fig. 3)).graphml")
@@ -51,6 +52,7 @@ plt.show()
 
 ![png](img/output_6_0.png)
 
+**Degree**  
 ```python
 # The nx.degree function outputs the degree of each node in the network
 nx.degree(sarscov2_human)
@@ -73,3 +75,29 @@ plt.show()
 
 ![png](img/output_14_0.png)
 
+**Distances**  
+
+```python
+paths=nx.shortest_path(sarscov2_human)
+distances=dict(nx.shortest_path_length(sarscov2_human))
+```
+```python
+all_dsit=[]
+for n1 in distances.keys():
+  l=list(distances[n1].values())
+  for val in l:
+    all_dsit.append(val)
+    
+all_dsit=[i for i in all_dsit if i != 0]
+```
+
+```python
+#Plot the distribution of distances from all nodes
+
+plt.hist(all_dsit,bins=20, color='#6990FF')
+plt.title('Histogram of node distances', fontname='serif', fontsize=20, fontweight='bold', color='#1E3680')
+plt.ylabel('Number of node pairs', fontname='sans-serif', fontsize=12, fontweight='heavy', color='#182E69')
+plt.xlabel('Distance', fontname='sans-serif', fontsize=12, fontweight='heavy', color='#182E69')
+plt.show()
+```
+![png](img/output_20_0.png)
