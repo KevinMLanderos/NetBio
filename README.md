@@ -181,6 +181,36 @@ plt.text(3000, -250, 'DrugBank', horizontalalignment='right', verticalalignment=
 plt.style.use('bmh') #ggplot, seaborn, bmh
 plt.show()
 ```
-
-
 ![png](img/output_61_0.png)
+
+**Betweenness Centrality**
+```python
+# You can generate a dictionary containing the node and the BC
+betweenness = nx.betweenness_centrality(nx.Graph(drug_humanProt))
+# Make values into a list
+bc = list(betweenness.values())
+#betweenness
+```
+```python
+plt.hist(bc,bins=35, color = '#C74650')
+plt.title('Histogram of betweeness centrality', fontname='serif', fontsize=20, fontweight='bold', color='#4A040A')
+plt.ylabel('Number of nodes', fontname='sans-serif', fontsize=12, fontweight='heavy', color='#91333B')
+plt.xlabel('Betweenness Centrality', fontname='sans-serif', fontsize=12, fontweight='heavy', color='#91333B')
+plt.show()
+```
+![png](img/output_79_0.png)
+
+
+**Degree centrality**
+```python
+degree_centrality = nx.degree_centrality(drug_humanProt)
+degree_cent = list(degree_centrality.values())
+
+plt.bar(list(drug_humanProt.nodes()), degree_cent, color = '#C74650')
+
+plt.title('Degree Centrality by Node', fontname='serif', fontsize=20, fontweight='bold', color='#4A040A')
+plt.xlabel('Node', fontname='sans-serif', fontsize=12, fontweight='heavy', color='#91333B')
+plt.ylabel('Degree Centrality', fontname='sans-serif', fontsize=12, fontweight='heavy', color='#91333B')
+
+```
+![png](img/output_81_1.png)
