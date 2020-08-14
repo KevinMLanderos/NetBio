@@ -6,4 +6,4 @@ This repository harbors all the scripts used during the accomplishment of the Ch
 Elizabeth Márquez  
 Kevin Meza  
 Diego Camacho  
-Victor Nieto  
+Victor Nieto 
