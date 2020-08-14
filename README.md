@@ -1,8 +1,8 @@
-# NetBio  
+# NetBio - Web Page
 
-This repository harbors all the scripts used during the accomplishment of the Challenge.
+This repository harbors all the HTML, CSS, ... files that helped us to create our web page.
 
-## Clubbers  
+## Tem Members  
 Elizabeth Márquez  
 Kevin Meza  
 Diego Camacho  
