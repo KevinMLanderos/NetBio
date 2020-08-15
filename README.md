@@ -219,4 +219,4 @@ plt.xlabel('Node', fontname='sans-serif', fontsize=12, fontweight='heavy', color
 plt.ylabel('Degree Centrality', fontname='sans-serif', fontsize=12, fontweight='heavy', color='#91333B')
 
 ```
-![png](img/output_81_1.png)
+![png](img/dc.png)
