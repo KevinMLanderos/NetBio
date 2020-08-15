@@ -222,8 +222,13 @@ plt.ylabel('Degree Centrality', fontname='sans-serif', fontsize=12, fontweight='
 ![png](img/dc.png)  
 
 ## Step 2  
-Combine these three PPI networks. Do the same as in part 1 but for this combined network.
+Combine these three PPI networks. Do the same as in part 1 but for this combined network.  
 
+Here we show the merged network from the 3 previous ones; Viral proteins are highlighted in color meant en menta, human proteins in purple ans drugs in red.
+![png](img/merge.png)  
+
+The we show the giant components of the merged network, it follows the same color code:  
+![png](img/merge_gc.png) 
 
 ## Bonus  
 We decided to make subgraphs from thee merged graph, but this time focusing on an specific drug and we analyzed its neighbors to make a functional analysis (not shown).  
@@ -288,7 +293,7 @@ plt.show()
 ![png](img/Dexamethasone.png)  
 
 
-
+### Hydroxycloroquine
 
 ```python
 import itertools
