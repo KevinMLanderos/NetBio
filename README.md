@@ -50,8 +50,8 @@ plt.style.use('bmh') #ggplot, seaborn, bmh
 plt.show()
 ```
 
-![png](img/a.png)
-Balck nodes represent viral proteins, while red nodes represent human proteins.
+![png](img/a.png)  
+Black nodes represent viral proteins, while red nodes represent human proteins.
 
 **Degree**  
 ```python
@@ -186,7 +186,7 @@ plt.text(3000, -250, 'DrugBank', horizontalalignment='right', verticalalignment=
 plt.style.use('bmh') #ggplot, seaborn, bmh
 plt.show()
 ```
-![png](img/c.png)
+![png](img/c.png)  
 Purple nodes represent human proteins, while yellow nodes represent drugs.
 
 **Betweenness Centrality**
@@ -219,4 +219,136 @@ plt.xlabel('Node', fontname='sans-serif', fontsize=12, fontweight='heavy', color
 plt.ylabel('Degree Centrality', fontname='sans-serif', fontsize=12, fontweight='heavy', color='#91333B')
 
 ```
-![png](img/dc.png)
+![png](img/dc.png)  
+
+## Step 2  
+Combine these three PPI networks. Do the same as in part 1 but for this combined network.
+
+
+## Bonus  
+We decided to make subgraphs from thee merged graph, but this time focusing on an specific drug and we analyzed its neighbors to make a functional analysis (not shown).  
+
+### Dexamethasone
+```python
+#Load the graph
+merge = nx.read_graphml("./Networks_Challenge/merge2a.graphml")
+
+import itertools
+
+# Primeros vecinos
+vecinos_Dexamethasone = [n for n in merge.neighbors("Dexamethasone") if merge.nodes(data=True)[n]["Bait_Boolean"] == 0 ]
+# Vecinos segundos
+#vecinos_2 = [i for i in list(merge.neighbors(n)) for n in vecinos_Dexamethasone if merge.nodes(data=True)[i]["Bait_Boolean"] == 0]
+vecinos_2 = []
+for n in vecinos_Dexamethasone:
+  lista = list(merge.neighbors(n))
+  for i in lista:
+    if merge.nodes(data=True)[i]["Bait_Boolean"] == 0:
+      vecinos_2.append(i)
+# Vecinos terceros
+vecinos_3 = []
+for n in vecinos_2:
+  lista = list(merge.neighbors(n))
+  for i in lista:
+    if merge.nodes(data=True)[i]["Bait_Boolean"] == 0:
+      vecinos_3.append(i)
+# Juntamos las 3 generaciones de vecinos (solo proteinas)
+vecinos_Dexamethasone.extend(vecinos_2)
+vecinos_Dexamethasone.extend(vecinos_3)
+
+```
+
+```python
+vecinos_Hydroxychloroquine.append("Hydroxychloroquine")
+subgraph_Hydroxychloroquine = merge.subgraph(vecinos_Hydroxychloroquine)
+
+# Node Colors
+dict_color={}
+for node in subgraph_Dexamethasone.nodes():
+  if (subgraph_Dexamethasone.nodes(data="Bait_Boolean")[node]==0):
+    dict_color[node]="orange"
+  else:
+    dict_color[node]="green"
+nx.set_node_attributes(subgraph_Dexamethasone, dict_color, 'node_color')
+node_colors=dict(subgraph_Dexamethasone.nodes(data="node_color")).values()
+```
+```python
+pos = nx.nx_agraph.graphviz_layout(subgraph_Dexamethasone,prog='neato')
+# # Plot the graph
+plt.figure(figsize=(10, 10))
+nx.draw_networkx_nodes(subgraph_Dexamethasone, pos=pos,node_size=300,alpha=0.5,node_color=node_colors)
+nx.draw_networkx_edges(subgraph_Dexamethasone, pos=pos,width=1,arrows=False,alpha=0.5)
+#Uncomment to label by node number
+nx.draw_networkx_labels(subgraph_Dexamethasone,pos=pos, font_size=8, alpha=1)
+plt.title("(Dexamethasone - Human Proteins) Interaction Graph", fontname='serif', fontsize=20, fontweight='bold', color='#463769')
+plt.style.use('bmh') #ggplot, seaborn, bmh
+plt.show()
+```
+
+![png](img/Dexamethasone.png)  
+
+
+
+
+```python
+import itertools
+
+# Primeros vecinos
+vecinos_Hydroxychloroquine = [n for n in merge.neighbors("Hydroxychloroquine") if merge.nodes(data=True)[n]["Bait_Boolean"] == 0 ]
+# Vecinos segundos
+#vecinos_2 = [i for i in list(merge.neighbors(n)) for n in vecinos_Dexamethasone if merge.nodes(data=True)[i]["Bait_Boolean"] == 0]
+vecinos_2 = []
+for n in vecinos_Hydroxychloroquine:
+  lista = list(merge.neighbors(n))
+  for i in lista:
+    if merge.nodes(data=True)[i]["Bait_Boolean"] == 0:
+      vecinos_2.append(i)
+
+# Vecinos terceros
+vecinos_3 = []
+for n in vecinos_2:
+  lista = list(merge.neighbors(n))
+  for i in lista:
+    if merge.nodes(data=True)[i]["Bait_Boolean"] == 0:
+      vecinos_3.append(i)
+
+# Juntamos las 3 generaciones de vecinos (solo proteinas)
+vecinos_Hydroxychloroquine.extend(vecinos_2)
+vecinos_Hydroxychloroquine.extend(vecinos_3)
+```
+
+```python
+vecinos_Hydroxychloroquine.append("Hydroxychloroquine")
+subgraph_Hydroxychloroquine = merge.subgraph(vecinos_Hydroxychloroquine)
+
+# Node Colors
+dict_color={}
+for node in subgraph_Hydroxychloroquine.nodes():
+  if (subgraph_Hydroxychloroquine.nodes(data="Bait_Boolean")[node]==0):
+    dict_color[node]="orange"
+  else:
+    dict_color[node]="green"
+nx.set_node_attributes(subgraph_Hydroxychloroquine, dict_color, 'node_color')
+node_colors=dict(subgraph_Hydroxychloroquine.nodes(data="node_color")).values()
+```
+
+```python
+pos = nx.nx_agraph.graphviz_layout(subgraph_Hydroxychloroquine,prog='neato')
+# # Plot the graph
+plt.figure(figsize=(10, 10))
+nx.draw_networkx_nodes(subgraph_Hydroxychloroquine, pos=pos,node_size=300,alpha=0.5,node_color=node_colors)
+nx.draw_networkx_edges(subgraph_Hydroxychloroquine, pos=pos,width=1,arrows=False,alpha=0.5)
+#Uncomment to label by node number
+nx.draw_networkx_labels(subgraph_Hydroxychloroquine,pos=pos, font_size=8, alpha=1)
+plt.title("(Hydroxychloroquine - Human Proteins) Interaction Graph", fontname='serif', fontsize=20, fontweight='bold', color='#463769')
+plt.style.use('bmh') #ggplot, seaborn, bmh
+plt.show()
+```
+
+![png](img/Hydroxycloroquine.png)
+
+
+
+```python
+```
+
