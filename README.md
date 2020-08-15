@@ -227,7 +227,7 @@ Combine these three PPI networks. Do the same as in part 1 but for this combined
 Here we show the merged network from the 3 previous ones. Viral proteins are highlighted in color meant, human proteins in purple ans drugs in red.  
 ![png](img/merge.png)  
 
-The we show the giant components of the merged network, it follows the same color code:  
+Then we show the giant components of the merged network, it follows the same color code:  
 ![png](img/merge_gc.png) 
 
 ## Bonus  
@@ -291,6 +291,7 @@ plt.show()
 ```
 
 ![png](img/Dexamethasone.png)  
+We can see the drug in color green, and the human proteins in color yellow.
 
 
 ### Hydroxycloroquine
@@ -350,7 +351,8 @@ plt.style.use('bmh') #ggplot, seaborn, bmh
 plt.show()
 ```
 
-![png](img/Hydroxycloroquine.png)
+![png](img/Hydroxycloroquine.png)  
+We can see the drug in color green, and the human proteins in color yellow.  
 
 
 
