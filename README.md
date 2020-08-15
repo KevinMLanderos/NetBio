@@ -19,7 +19,9 @@ Workflow based on: https://github.com/jgtz/CdeCMx2020-NetworkBiology
 ***Important Note: Some steps are ommited here, here we show some of the important points. To get the complete workflow take a look of the the attached Jupyter Notebooks.***  
 
 ## Step 1  
-Use NetworkX to calculate network theory measures (degree, distance, betweeness centrality, and others you might find interesting) on each of the three PPI networks (COVID-Human, Human, Drug-Human). What is the distribution of these network measures? What are the nodes or node pairs with the highest value for these measures in each network?
+Use NetworkX to calculate network theory measures (degree, distance, betweeness centrality, and others you might find interesting) on each of the three PPI networks (COVID-Human, Human, Drug-Human). What is the distribution of these network measures? What are the nodes or node pairs with the highest value for these measures in each network?  
+
+For further reading check this file: Challenge_Redes.ipynb
 
 ### SARS-CoV-2 - Human PPI Network  
 ```python
@@ -223,6 +225,7 @@ plt.ylabel('Degree Centrality', fontname='sans-serif', fontsize=12, fontweight='
 
 ## Step 2  
 Combine these three PPI networks. Do the same as in part 1 but for this combined network.  
+For further reading check this file: Challenge_Redes.ipynb
 
 Here we show the merged network from the 3 previous ones. Viral proteins are highlighted in color meant, human proteins in purple ans drugs in red.  
 ![png](img/merge.png)  
@@ -230,8 +233,10 @@ Here we show the merged network from the 3 previous ones. Viral proteins are hig
 Then we show the giant components of the merged network, it follows the same color code:  
 ![png](img/merge_gc.png) 
 
-## Bonus  
+## Bonus 1  
 We decided to make subgraphs from thee merged graph, but this time focusing on an specific drug and we analyzed its neighbors to make a functional analysis (not shown).  
+For further reading check this file: Farmacos.ipynb   
+Enrichment Analisys: gprofChallenge.html
 
 ### Dexamethasone
 ```python
@@ -354,7 +359,8 @@ plt.show()
 ![png](img/Hydroxycloroquine.png)  
 We can see the drug in color green, and the human proteins in color yellow.  
 
-
+## Bonus 2  
+For further reading check this file: tissue.ipynb
 
 ```python
 ```
