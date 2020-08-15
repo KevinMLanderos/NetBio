@@ -224,7 +224,7 @@ plt.ylabel('Degree Centrality', fontname='sans-serif', fontsize=12, fontweight='
 ## Step 2  
 Combine these three PPI networks. Do the same as in part 1 but for this combined network.  
 
-Here we show the merged network from the 3 previous ones; Viral proteins are highlighted in color meant en menta, human proteins in purple ans drugs in red.
+Here we show the merged network from the 3 previous ones. Viral proteins are highlighted in color meant, human proteins in purple ans drugs in red.  
 ![png](img/merge.png)  
 
 The we show the giant components of the merged network, it follows the same color code:  
