@@ -50,7 +50,8 @@ plt.style.use('bmh') #ggplot, seaborn, bmh
 plt.show()
 ```
 
-![png](img/output_6_0.png)
+![png](img/a.png)
+Balck nodes represent viral proteins, while red nodes represent human proteins.
 
 **Degree**  
 ```python
@@ -106,12 +107,16 @@ plt.show()
 ```python
 #Load the graph
 human_ppi = nx.read_graphml("./Networks_Challenge/HI_union.graphml")
-
+human_ppi= nx.Graph(human_ppi)
+dic=dict(human_ppi.nodes(data=True))
+for d in dic:
+  dic[d]["Bait_Boolean"]=0
+node_color=[((int(dic[n]["Bait_Boolean"]))) for n in dic ]
 # Define position of each node
 pos = nx.nx_agraph.graphviz_layout(human_ppi,prog='neato')
-# # Plot the graph
+# Plot the graph
 plt.figure(figsize=(10, 10))
-nx.draw_networkx_nodes(human_ppi, pos=pos,node_size=30, node_color='#6BB533')
+nx.draw_networkx_nodes(human_ppi, pos=pos,node_size=30, node_color=node_color)
 nx.draw_networkx_edges(human_ppi, pos=pos,width=0.5,arrows=False)
 #Uncomment to label by node number
 #nx.draw_networkx_labels(sarscov2_human,pos=pos, font_size=8, alpha=1)
@@ -122,7 +127,7 @@ plt.style.use('bmh') #ggplot, seaborn, bmh
 plt.show()
 ```
 
-![png](img/output_33_0.png)
+![png](img/b.png)
 
 
 **Communities**  
@@ -181,7 +186,8 @@ plt.text(3000, -250, 'DrugBank', horizontalalignment='right', verticalalignment=
 plt.style.use('bmh') #ggplot, seaborn, bmh
 plt.show()
 ```
-![png](img/output_61_0.png)
+![png](img/c.png)
+Purple nodes represent human proteins, while yellow nodes represent drugs.
 
 **Betweenness Centrality**
 ```python
