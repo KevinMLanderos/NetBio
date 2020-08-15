@@ -74,7 +74,7 @@ plt.xlabel('Degree', fontname='sans-serif', fontsize=12, fontweight='heavy', col
 plt.show()
 ```
 
-![png](img/output_14_0.png)
+![png](img/degree_hist.png)
 
 **Distances**  
 
@@ -101,7 +101,7 @@ plt.ylabel('Number of node pairs', fontname='sans-serif', fontsize=12, fontweigh
 plt.xlabel('Distance', fontname='sans-serif', fontsize=12, fontweight='heavy', color='#182E69')
 plt.show()
 ```
-![png](img/output_20_0.png)
+![png](img/dis_hist.png)
 
 ### Human PPI Network
 ```python
@@ -163,7 +163,7 @@ communities_dictionary=communities_labelprop_dictionary
 nx.draw_networkx(human_ppi, pos, node_size=600,with_labels=True, cmap=plt.cm.RdYlBu, node_color=list(communities_dictionary.values()))
 plt.show(human_ppi)
 ```
-![png](img/output_59_0.png)  
+![png](img/label_prop.png)  
 
 ### Drug - Human Protein Target Network
 
@@ -204,7 +204,7 @@ plt.ylabel('Number of nodes', fontname='sans-serif', fontsize=12, fontweight='he
 plt.xlabel('Betweenness Centrality', fontname='sans-serif', fontsize=12, fontweight='heavy', color='#91333B')
 plt.show()
 ```
-![png](img/output_79_0.png)
+![png](img/bc.png)
 
 
 **Degree centrality**
