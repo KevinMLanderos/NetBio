@@ -122,7 +122,6 @@ nx.draw_networkx_nodes(human_ppi, pos=pos,node_size=30, node_color=node_color)
 nx.draw_networkx_edges(human_ppi, pos=pos,width=0.5,arrows=False)
 #Uncomment to label by node number
 #nx.draw_networkx_labels(sarscov2_human,pos=pos, font_size=8, alpha=1)
-plt.title("Human protein-protein interaction network of Lung proteins", fontname='serif', fontsize=20, fontweight='bold', color='#3D6E18')
 plt.text(900, -200, 'Luck et al. Nature 2020', horizontalalignment='right', verticalalignment='bottom', fontname='monospace', fontstyle='italic')
 
 plt.style.use('bmh') #ggplot, seaborn, bmh
