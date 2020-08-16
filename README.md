@@ -3,7 +3,7 @@
 
 This repository harbors all the scripts (python, R), networks and other files used during the accomplishment of the CdeCMx 2020 Network Biology Challenge.
 
-## GenoTeam (C-19) - Clubbers  
+## GenoTeam (C-16) - Clubbers  
 Elizabeth Márquez  
 Kevin Meza Landeros  
 Diego Camacho Hernández  
