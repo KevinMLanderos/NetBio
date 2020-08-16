@@ -123,7 +123,7 @@ nx.draw_networkx_edges(human_ppi, pos=pos,width=0.5,arrows=False)
 #Uncomment to label by node number
 #nx.draw_networkx_labels(sarscov2_human,pos=pos, font_size=8, alpha=1)
 plt.text(900, -200, 'Luck et al. Nature 2020', horizontalalignment='right', verticalalignment='bottom', fontname='monospace', fontstyle='italic')
-
+plt.title("Human protein-protein interaction network", fontname='serif', fontsize=20, fontweight='bold', color='#1E3680')
 plt.style.use('bmh') #ggplot, seaborn, bmh
 plt.show()
 ```
