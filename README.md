@@ -366,6 +366,7 @@ Fucntional and pathway enrichment:
 ![png](img/H_enrichment.png) 
 
 ## Bonus 2  
+Unfortunately we did not managed to complete this part, he have some partial results. But the idea behind this, was to use tissue specific networks (lung & liver) and merge them again with the SARS-CoV2/Human and Drug/Human Networks. Then, we would see how tissue specific proteins are connected with SARS-CoV2 proteins and  if this interactions are related to the observed tissue specific symptoms by making a functional analysis. After this we wanted to analyze if some known drugs affected certain fucntions of the organs.  
 For further reading check this file: tissue.ipynb
 
 ```python
