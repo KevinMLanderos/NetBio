@@ -234,9 +234,9 @@ Then we show the giant components of the merged network, it follows the same col
 ![png](img/merge_gc.png) 
 
 ## Bonus 1  
-We decided to make subgraphs from thee merged graph, but this time focusing on an specific drug and we analyzed its neighbors to make a functional analysis (not shown).  
+We decided to make subgraphs from thee merged graph, but this time focusing on an specific drug and we analyzed its neighbors to make a functional analysis.  
 For further reading check this file: Farmacos.ipynb   
-Enrichment Analisys: gprofChallenge.html
+Enrichment interactive Plot: gprofChallenge.html
 
 ### Dexamethasone
 ```python
@@ -296,7 +296,10 @@ plt.show()
 ```
 
 ![png](img/Dexamethasone.png)  
-We can see the drug in color green, and the human proteins in color yellow.
+We can see the drug in color green, and the human proteins in color yellow.  
+
+Fucntional and pathway enrichment:  
+![png](img/D_enrichment.png) 
 
 
 ### Hydroxycloroquine
@@ -358,6 +361,9 @@ plt.show()
 
 ![png](img/Hydroxycloroquine.png)  
 We can see the drug in color green, and the human proteins in color yellow.  
+
+Fucntional and pathway enrichment:  
+![png](img/H_enrichment.png) 
 
 ## Bonus 2  
 For further reading check this file: tissue.ipynb
